@@ -1,0 +1,7 @@
+# emacs files
+*~
+
+# c files
+*.o
+minesweeper
+*.out
