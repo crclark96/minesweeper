@@ -7,5 +7,9 @@ int main(void){
   char grid[BOARD_SIZE][BOARD_SIZE];
   initialize_board(board);
   print_board_integers(board);
+  printf("\n");
+  initialize_grid(grid);
+  print_grid(grid);
+
   return 0;
 }
