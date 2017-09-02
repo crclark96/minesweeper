@@ -31,3 +31,7 @@ int print_grid(char grid[][BOARD_SIZE]){
   }
   return 0;
 }
+
+int reveal_grid(char grid[][BOARD_SIZE], int board[][BOARD_SIZE]){;}
+int flag_grid(char grid[][BOARD_SIZE]){;}
+int verify_grid(char grid[][BOARD_SIZE], int board[][BOARD_SIZE]){;}
