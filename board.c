@@ -46,8 +46,9 @@ int initialize_board(int board[][BOARD_SIZE]){
   return 0;
 }
 
-int print_board(int board[BOARD_SIZE][BOARD_SIZE]){
+int print_board_integers(int board[][BOARD_SIZE]){
   // prints the board's integer representation
+  // 9 for mines, numbers for regular tiles
   for (int i=0;i<BOARD_SIZE;i++){
     for (int j=0;j<BOARD_SIZE;j++){
       printf("%i ",board[i][j]);
