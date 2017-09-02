@@ -1,8 +1,6 @@
 #include "stdio.h"
 #include "stdlib.h"
-
-#define BOARD_SIZE 16
-#define NUM_MINES 32
+#include "board.h"
 
 int increment_surroundings(int board[][BOARD_SIZE], int x, int y){
   // increments the surrounding tiles by one so they know how many
@@ -59,9 +57,4 @@ int print_board(int board[BOARD_SIZE][BOARD_SIZE]){
   return 0;
 }
 
-int main(void){
-  int board[BOARD_SIZE][BOARD_SIZE];
-  initialize_board(board);
-  print_board(board);
-  return 0;
-}
+
