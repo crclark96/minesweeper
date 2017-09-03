@@ -17,6 +17,7 @@ int main(void){
   
   while(1){
     // main game loop
+    print_grid(grid);
     printf("press r to reveal, f to flag, v to verify, or q to quit \n");
     input = getchar();
     assert('\n' == getchar()); // get newline

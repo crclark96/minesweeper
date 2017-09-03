@@ -51,7 +51,7 @@ int print_board_integers(int board[][BOARD_SIZE]){
   // 9 for mines, numbers for regular tiles
   for (int i=0;i<BOARD_SIZE;i++){
     for (int j=0;j<BOARD_SIZE;j++){
-      printf("%i ",board[i][j]);
+      printf("%i ",board[j][i]);
     }
     printf("\n");
   }
