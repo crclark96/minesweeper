@@ -1,9 +1,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
-#include <assert.h>
 #include "board.h"
 #include "grid.h"
+#include "input.h"
 
 int main(void){
   int board[BOARD_SIZE][BOARD_SIZE];
@@ -21,16 +21,7 @@ int main(void){
     print_grid(grid);
     printf("press r to reveal, f to flag, v to verify, or q to quit \n");
 
-    // ensure single character input without storing in memory
-    num_characters = 0;
-    input = getchar();
-    while(c!='\n'){
-      c = getchar();
-      num_characters++;
-    }
-    if(num_characters > 1){
-      input = '\0'; // goto default in switch statement
-    }
+    input = single_char_input();
 
     switch(input){
     case 'r':

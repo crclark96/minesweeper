@@ -2,6 +2,7 @@
 #include <assert.h>
 #include "grid.h"
 #include "board.h"
+#include "input.h"
 
 int initialize_grid(char grid[][BOARD_SIZE]){
   // initialize character grid to represent game board
@@ -40,8 +41,7 @@ int flag_grid(char grid[][BOARD_SIZE]){
                     'a','b','c','d','e','f'};
   int x,y;
   printf("enter x index: ");
-  char index = getchar();
-  assert('\n' == getchar()); // get newline
+  char index = single_char_input();
   for(int i=0;i<sizeof(indices)/sizeof(char);i++){
     if(indices[i] == index){
       x = i;
@@ -49,8 +49,7 @@ int flag_grid(char grid[][BOARD_SIZE]){
     }
   }
   printf("enter y index: ");
-  index = getchar();
-  assert('\n' == getchar()); // get newline
+  index = single_char_input();
   for(int i=0;i<sizeof(indices)/sizeof(char);i++){
     if(indices[i] == index){
       y = i;
