@@ -5,7 +5,7 @@
 #include "input.h"
 
 #define UNKNOWN_CHAR '?'
-#define EMPTY_CHAR '-'
+#define EMPTY_CHAR '_'
 #define MINE_CHAR '*'
 
 int initialize_grid(char grid[][BOARD_SIZE]){
