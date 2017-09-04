@@ -1,6 +1,9 @@
 # emacs files
 *~
 
+# valgrind
+*.dSYM
+
 # c files
 *.o
 minesweeper

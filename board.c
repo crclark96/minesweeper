@@ -34,6 +34,8 @@ int initialize_board(int board[][BOARD_SIZE]){
   for (int i=0;i<NUM_MINES;i++){
     int x = rand() % BOARD_SIZE;
     int y = rand() % BOARD_SIZE;
+    // TODO: allow mines to be placed adjacently
+    // (this involves editing the increment_surroundings func as well)
     if (board[x][y] != 0){
       // try again
       i--;

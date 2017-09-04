@@ -4,12 +4,16 @@
 #include "board.h"
 #include "input.h"
 
+#define UNKNOWN_CHAR '?'
+#define EMPTY_CHAR '-'
+#define MINE_CHAR '*'
+
 int initialize_grid(char grid[][BOARD_SIZE]){
   // initialize character grid to represent game board
 
   for (int i=0;i<BOARD_SIZE;i++){
     for (int j=0;j<BOARD_SIZE;j++){
-      grid[i][j] = '-';
+      grid[i][j] = UNKNOWN_CHAR;
     }
   }
 
@@ -34,11 +38,40 @@ int print_grid(char grid[][BOARD_SIZE]){
   return 0;
 }
 
+int check_surroundings(char grid[][BOARD_SIZE], \
+                       int board[][BOARD_SIZE], int x, int y){
+  int x_coords[] = {x-1,x,x+1};
+  int y_coords[] = {y-1,y,y+1};
+  printf("checking value at %i, %i \n",x,y);
+  if(x < BOARD_SIZE && y < BOARD_SIZE && x >= 0 && y >= 0){
+    if(board[x][y] == 0){
+      grid[x][y] = EMPTY_CHAR;
+      for(int i=0;i<3;i++){
+        for(int j=0;j<3;j++){
+          if(grid[x_coords[i]][y_coords[j]] == UNKNOWN_CHAR)
+            check_surroundings(grid,board,x_coords[i],y_coords[j]);
+        }
+      }
+    }
+  }
+  return 0;
+}
 int reveal_grid(char grid[][BOARD_SIZE], \
                 int board[][BOARD_SIZE]){
   int x,y;
   get_coords(&x, &y);
-  
+  switch(board[x][y]){
+  case 9:
+    grid[x][y] = MINE_CHAR;
+    break;
+  case 0:
+    grid[x][y] = EMPTY_CHAR;
+    check_surroundings(grid,board,x,y);
+    break;
+  default:
+    grid[x][y] = board[x][y] + '0'; // convert int to char repr
+    break;
+  }
   return 0;
 }
 int flag_grid(char grid[][BOARD_SIZE]){
