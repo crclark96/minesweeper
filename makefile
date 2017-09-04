@@ -1,8 +1,12 @@
-CC=gcc
+CC = gcc
+EXEC = minesweeper
+OBJS = board.o main.o grid.o input.o
 
-minesweeper: board.o main.o grid.o input.o
-	$(CC) -o minesweeper board.o grid.o main.o input.o
-	./minesweeper
+$(EXEC): $(OBJS)
+	$(CC) -o $@ $^
+
+run: $(EXEC)
+	./$(EXEC)
 
 clean:
-	rm *.o minesweeper
+	rm $(OBJS) $(EXEC)
