@@ -35,27 +35,15 @@ int print_grid(char grid[][BOARD_SIZE]){
 }
 
 int reveal_grid(char grid[][BOARD_SIZE], \
-                int board[][BOARD_SIZE]){return 0;}
-int flag_grid(char grid[][BOARD_SIZE]){
-  char indices[] = {'0','1','2','3','4','5','6','7','8','9',    \
-                    'a','b','c','d','e','f'};
+                int board[][BOARD_SIZE]){
   int x,y;
-  printf("enter x index: ");
-  char index = single_char_input();
-  for(int i=0;i<sizeof(indices)/sizeof(char);i++){
-    if(indices[i] == index){
-      x = i;
-      break;
-    }
-  }
-  printf("enter y index: ");
-  index = single_char_input();
-  for(int i=0;i<sizeof(indices)/sizeof(char);i++){
-    if(indices[i] == index){
-      y = i;
-      break;
-    }
-  }
+  get_coords(&x, &y);
+  
+  return 0;
+}
+int flag_grid(char grid[][BOARD_SIZE]){
+  int x,y;
+  get_coords(&x, &y);
   grid[x][y] = 'F';
   return 0;
 }

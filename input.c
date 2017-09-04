@@ -20,3 +20,27 @@ char single_char_input(){
   }
   return input;
 }
+
+int get_coords(int *x, int *y){
+  // gets coordinate input from user, converts to ints and 
+  // enters data into passed pointers
+  char indices[] = {'0','1','2','3','4','5','6','7','8','9',    \
+                    'a','b','c','d','e','f'};
+  printf("enter x index: ");
+  char index = single_char_input();
+  for(int i=0;i<sizeof(indices)/sizeof(char);i++){
+    if(indices[i] == index){
+      *x = i;
+      break;
+    }
+  }
+  printf("enter y index: ");
+  index = single_char_input();
+  for(int i=0;i<sizeof(indices)/sizeof(char);i++){
+    if(indices[i] == index){
+      *y = i;
+      break;
+    }
+  }
+  return 0;
+}
