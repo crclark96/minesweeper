@@ -61,6 +61,7 @@ int reveal_grid(char grid[][BOARD_SIZE], \
   get_coords(&x, &y);
   switch(board[x][y]){
   case 9:
+    // TODO: end game when a mine is revealed 
     grid[x][y] = MINE_CHAR;
     break;
   case 0:
@@ -79,4 +80,6 @@ int flag_grid(char grid[][BOARD_SIZE]){
   grid[x][y] = 'F';
   return 0;
 }
+
+// TODO: this function should verify that all mines have been flagged
 int verify_grid(char grid[][BOARD_SIZE], int board[][BOARD_SIZE]){return 0;}
