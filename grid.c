@@ -42,7 +42,6 @@ int check_surroundings(char grid[][BOARD_SIZE], \
                        int board[][BOARD_SIZE], int x, int y){
   int x_coords[] = {x-1,x,x+1};
   int y_coords[] = {y-1,y,y+1};
-  printf("checking value at %i, %i \n",x,y);
   if(x < BOARD_SIZE && y < BOARD_SIZE && x >= 0 && y >= 0){
     if(board[x][y] == 0){
       grid[x][y] = EMPTY_CHAR;
