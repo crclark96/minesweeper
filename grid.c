@@ -82,4 +82,21 @@ int flag_grid(char grid[][BOARD_SIZE]){
 }
 
 // TODO: this function should verify that all mines have been flagged
-int verify_grid(char grid[][BOARD_SIZE], int board[][BOARD_SIZE]){return 0;}
+int verify_grid(char grid[][BOARD_SIZE], int board[][BOARD_SIZE]){
+  int verify = 1; //if any of the mines are not flagged verify will be changed to 0
+ for (int i=0;i<BOARD_SIZE;i++){
+    for (int j=0;j<BOARD_SIZE;j++){
+      if(grid[i][j] == 'F'){
+        if(board[i][j] != 9){
+          verify = 0; //if a space is incorrectly flagged then the grid is not verified
+        }
+      }
+      if(board[i][j] == 9){
+        if(grid[i][j] != 'F'){
+          verify = 0; // if the board has a mine that is not flagged on the grid then the grid is not verified
+        }
+      }
+    }
+  }
+  return verify;
+}
