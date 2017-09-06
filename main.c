@@ -11,6 +11,7 @@ int main(void){
   char input, c;
   int num_characters;
   initialize_board(board);
+  print_board_integers(board);
   printf("\n");
   initialize_grid(grid);
   
