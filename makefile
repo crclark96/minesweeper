@@ -1,5 +1,5 @@
 CC = gcc
-CFLAGS = -g
+CFLAGS = -g -std=c99
 EXEC = minesweeper
 OBJS = board.o main.o grid.o input.o
 
