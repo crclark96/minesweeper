@@ -23,10 +23,10 @@ int increment_surroundings(int board[][BOARD_SIZE], int x, int y){
   return 0;
 }
 
-int initialize_board(int board[][BOARD_SIZE]){
+int initialize_board(int board[BOARD_HEIGHT][BOARD_WIDTH]){
   // initialize the board based on definitions above
-  for (int i=0;i<BOARD_SIZE;i++){
-    for (int j=0;j<BOARD_SIZE;j++){
+  for (int i=0;i<BOARD_HEIGHT;i++){
+    for (int j=0;j<BOARD_WIDTH;j++){
       board[i][j] = 0;
     }
   }
