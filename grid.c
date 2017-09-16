@@ -55,15 +55,16 @@ int check_surroundings(char grid[][BOARD_SIZE], \
   }
   return 0;
 }
+
+// This method returns 1 if a bomb was picked, 0 otherwise
 int reveal_grid(char grid[][BOARD_SIZE], \
                 int board[][BOARD_SIZE]){
   int x,y;
   get_coords(&x, &y);
   switch(board[x][y]){
   case 9:
-    // TODO: end game when a mine is revealed 
     grid[x][y] = MINE_CHAR;
-    break;
+    return 1; 
   case 0:
     grid[x][y] = EMPTY_CHAR;
     check_surroundings(grid,board,x,y);

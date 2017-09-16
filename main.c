@@ -15,6 +15,7 @@ int main(void){
   printf("\n");
   initialize_grid(grid);
   
+  
   while(1){
     // main game loop
     print_grid(grid);
@@ -24,7 +25,11 @@ int main(void){
 
     switch(input){
     case 'r':
-      reveal_grid(grid,board);
+      if(reveal_grid(grid,board)){
+        print_grid(grid);
+        printf("you exploded! \n");
+        exit(0);
+      }
       break;
     case 'f':
       flag_grid(grid);
