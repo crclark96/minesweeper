@@ -41,8 +41,8 @@ int main(void){
           printf("you exploded! \n");
           exit(0);
         }
-        bFirstMove = 0;
       }
+      bFirstMove = 0;
       break;
     case 'f':
       flag_grid(grid);
