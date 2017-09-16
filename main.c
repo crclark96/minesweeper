@@ -27,22 +27,11 @@ int main(void){
     int x,y;
     case 'r':
       get_coords(&x,&y);
-      int result = reveal_grid(grid,board, x, y); 
-      if(result){ // 9 is bomb, 1 is number, 0 for empty space
-        if(bFirstMove){
-          do{
-            initialize_board(board);
-            initialize_grid(grid);
-          }
-          while(reveal_grid(grid,board,x,y));
-        }
-        else if(result == 9){
+      if(reveal_grid(grid,board, x, y, &bFirstMove)){ // return of 1 means game over
           print_grid(grid);
           printf("you exploded! \n");
           exit(0);
         }
-      }
-      bFirstMove = 0;
       break;
     case 'f':
       flag_grid(grid);

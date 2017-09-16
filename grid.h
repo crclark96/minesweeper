@@ -7,7 +7,8 @@ int initialize_grid(char grid[][BOARD_SIZE]);
 int print_grid(char grid[][BOARD_SIZE]);
 int reveal_grid(char grid[][BOARD_SIZE], \
                 int board[][BOARD_SIZE], \
-                int x, int y);
+                int x, int y, \
+                int *bFirstMove);
 int flag_grid(char grid[][BOARD_SIZE]);
 int verify_grid(char grid[][BOARD_SIZE], int board[][BOARD_SIZE]);
 int check_surroundings(char grid[][BOARD_SIZE], \

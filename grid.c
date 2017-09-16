@@ -59,18 +59,30 @@ int check_surroundings(char grid[][BOARD_SIZE], \
 // This method returns 9 if a bomb was picked, 1 if a non-empty space, 0 otherwise
 int reveal_grid(char grid[][BOARD_SIZE], \
                 int board[][BOARD_SIZE], \
-                int x, int y){
+                int x, int y, \
+                int *bFirstMove){
+                  
+  if(*bFirstMove){ //only runs on first move
+    while(board[x][y] != 0){
+      initialize_board(board);
+    }
+    printf("DEBUG: New Board: \n\n");
+    print_board_integers(board);
+    printf("\n");
+    *bFirstMove = 0; //clear flag
+  }
+    
   switch(board[x][y]){
   case 9:
     grid[x][y] = MINE_CHAR;
-    return 9; 
+    return 1; 
   case 0:
     grid[x][y] = EMPTY_CHAR;
     check_surroundings(grid,board,x,y);
     break;
   default:
     grid[x][y] = board[x][y] + '0'; // convert int to char repr
-    return 1;
+    break;
   }
   return 0;
 }
