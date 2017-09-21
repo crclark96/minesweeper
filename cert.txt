@@ -1,4 +1,9 @@
-EXP30-C: no errors or warnings generated with -Wsequence-point flag at 
+EXP30-C: no modifications of variables between sequence points
+         no errors or warnings generated with -Wsequence-point flag at 
          compile time
 
+EXP32-C: no volatile access through non-volatile references
+         no errors or warnings generated with -Wcast-qual flag at
+         compile time
 
+EXP33-C: 
