@@ -6,4 +6,6 @@ EXP32-C: no volatile access through non-volatile references
          no errors or warnings generated with -Wcast-qual flag at
          compile time
 
-EXP33-C: 
+EXP33-C: do not access uninitialized memory
+         no errors or warnings generated with -Wuninitialized flag at
+         compile time
