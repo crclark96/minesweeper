@@ -8,11 +8,11 @@
 #define EMPTY_CHAR ' '
 #define MINE_CHAR '*'
 
-int initialize_grid(char grid[][BOARD_SIZE]){
+int initialize_grid(char grid[BOARD_WIDTH][BOARD_HEIGHT]){
   // initialize character grid to represent game board
 
-  for (int i=0;i<BOARD_SIZE;i++){
-    for (int j=0;j<BOARD_SIZE;j++){
+  for (int i=0;i<BOARD_WIDTH;i++){
+    for (int j=0;j<BOARD_HEIGHT;j++){
       grid[i][j] = UNKNOWN_CHAR;
     }
   }
@@ -20,17 +20,17 @@ int initialize_grid(char grid[][BOARD_SIZE]){
   return 0;
 }
 
-int print_grid(char grid[][BOARD_SIZE]){
+int print_grid(char grid[BOARD_WIDTH][BOARD_HEIGHT]){
   char indices[] = {'0','1','2','3','4','5','6','7','8','9',\
                     'a','b','c','d','e','f'};
   printf(" ");
-  for (int i=0;i<BOARD_SIZE;i++){
+  for (int i=0;i<BOARD_WIDTH;i++){
     printf(" %c",indices[i]);
   }
   printf("\n");
-  for (int i=0;i<BOARD_SIZE;i++){
+  for (int i=0;i<BOARD_HEIGHT;i++){
     printf("%c ",indices[i]);
-    for (int j=0;j<BOARD_SIZE;j++){
+    for (int j=0;j<BOARD_WIDTH;j++){
       printf("%c ",grid[j][i]);
     }
     printf("\n");
@@ -38,11 +38,11 @@ int print_grid(char grid[][BOARD_SIZE]){
   return 0;
 }
 
-int check_surroundings(char grid[][BOARD_SIZE], \
-                       int board[][BOARD_SIZE], int x, int y){
+int check_surroundings(char grid[BOARD_WIDTH][BOARD_HEIGHT], \
+                       int board[BOARD_WIDTH][BOARD_HEIGHT], int x, int y){
   int x_coords[] = {x-1,x,x+1};
   int y_coords[] = {y-1,y,y+1};
-  if(x < BOARD_SIZE && y < BOARD_SIZE && x >= 0 && y >= 0){
+  if(x < BOARD_WIDTH && y < BOARD_HEIGHT && x >= 0 && y >= 0){
     if(board[x][y] == 0){
       grid[x][y] = EMPTY_CHAR;
       for(int i=0;i<3;i++){
@@ -52,13 +52,16 @@ int check_surroundings(char grid[][BOARD_SIZE], \
         }
       }
     }
+    else{
+      grid[x][y] = board [x][y] + '0'; //show the edges of the empty space numbers
+    }
   }
   return 0;
 }
 
 // This method returns 9 if a bomb was picked, 1 if a non-empty space, 0 otherwise
-int reveal_grid(char grid[][BOARD_SIZE], \
-                int board[][BOARD_SIZE], \
+int reveal_grid(char grid[BOARD_WIDTH][BOARD_HEIGHT], \
+                int board[BOARD_WIDTH][BOARD_HEIGHT], \
                 int x, int y, \
                 int *bFirstMove){
                   
@@ -86,7 +89,7 @@ int reveal_grid(char grid[][BOARD_SIZE], \
   }
   return 0;
 }
-int flag_grid(char grid[][BOARD_SIZE]){
+int flag_grid(char grid[BOARD_WIDTH][BOARD_HEIGHT]){
   int x,y;
   get_coords(&x, &y);
   grid[x][y] = 'F';
@@ -94,10 +97,10 @@ int flag_grid(char grid[][BOARD_SIZE]){
 }
 
 // TODO: this function should verify that all mines have been flagged
-int verify_grid(char grid[][BOARD_SIZE], int board[][BOARD_SIZE]){
+int verify_grid(char grid[BOARD_WIDTH][BOARD_HEIGHT], int board[BOARD_WIDTH][BOARD_HEIGHT]){
   int verify = 1; //if any of the mines are not flagged verify will be changed to 0
- for (int i=0;i<BOARD_SIZE;i++){
-    for (int j=0;j<BOARD_SIZE;j++){
+ for (int i=0;i<BOARD_WIDTH;i++){
+    for (int j=0;j<BOARD_HEIGHT;j++){
       if(grid[i][j] == 'F'){
         if(board[i][j] != 9){
           verify = 0; //if a space is incorrectly flagged then the grid is not verified

@@ -7,8 +7,8 @@
 
 #define NUM_MINES 32
 
-int increment_surroundings(int board[][BOARD_SIZE], int x, int y);
-int initialize_board(int board[][BOARD_SIZE]);
-int print_board_integers(int board[][BOARD_SIZE]);
+int increment_surroundings(int board[BOARD_WIDTH][BOARD_HEIGHT], int x, int y);
+int initialize_board(int board[BOARD_WIDTH][BOARD_HEIGHT]);
+int print_board_integers(int board[BOARD_WIDTH][BOARD_HEIGHT]);
 
 #endif
