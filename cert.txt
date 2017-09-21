@@ -1,0 +1,4 @@
+EXP30-C: no errors or warnings generated with -Wsequence-point flag at 
+         compile time
+
+
