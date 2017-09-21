@@ -5,11 +5,6 @@
 #include "grid.h"
 #include "input.h"
 
-<<<<<<< Updated upstream
-int main(void){
-  int board[BOARD_SIZE][BOARD_SIZE];
-  char grid[BOARD_SIZE][BOARD_SIZE];
-=======
 int main(int argc, char* argv[]){
   if(argc != 4){
     printf("You must call ./minesweeper followed by the 3 arguments: BOARD_WIDTH, BOARD_HEIGHT, NUM_MINES\n");
@@ -28,7 +23,6 @@ int main(int argc, char* argv[]){
 
   int board[BOARD_WIDTH][BOARD_HEIGHT];
   char grid[BOARD_WIDTH][BOARD_HEIGHT];
->>>>>>> Stashed changes
   char input, c;
   int num_characters;
   initialize_board(board,BOARD_WIDTH, BOARD_HEIGHT, NUM_MINES);
