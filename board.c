@@ -26,15 +26,15 @@ int increment_surroundings(int **board, int BOARD_WIDTH, int BOARD_HEIGHT, int x
 
 int initialize_board(int **board, int BOARD_WIDTH, int BOARD_HEIGHT, int NUM_MINES){
   // initialize the board based on definitions above
-  for (int i=0;i<BOARD_SIZE;i++){
-    for (int j=0;j<BOARD_SIZE;j++){
+  for (int i=0;i<BOARD_WIDTH;i++){
+    for (int j=0;j<BOARD_HEIGHT;j++){
       board[i][j] = 0;
     }
   }
   // place mines
   for (int i=0;i<NUM_MINES;i++){
-    int x = rand() % BOARD_SIZE;
-    int y = rand() % BOARD_SIZE;
+    int x = rand() % BOARD_WIDTH;
+    int y = rand() % BOARD_HEIGHT;
     // TODO: allow mines to be placed adjacently
     // (this involves editing the increment_surroundings func as well)
     if (board[x][y] != 0){
