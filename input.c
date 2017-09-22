@@ -61,7 +61,7 @@ int get_coords(int *x, int *y, int maxX, int maxY){
       }
     }
     if(badNumber){
-      printf("please enter a valid x coordinate based on the board size \n");
+      printf("please enter a valid y coordinate based on the board size \n");
     }
   }
   

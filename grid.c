@@ -47,8 +47,8 @@ int check_surroundings(char **grid, \
       grid[x][y] = EMPTY_CHAR;
       for(int i=0;i<3;i++){
         for(int j=0;j<3;j++){
-          if(x_coords[i] >= 0 && x_coords[i] < BOARD_WIDTH && y_coords[i] >= 0 \
-            && y_coords[i] < BOARD_HEIGHT){//make sure to not check out of bounds
+          if(x_coords[i] >= 0 && x_coords[i] < BOARD_WIDTH && y_coords[j] >= 0 \
+            && y_coords[j] < BOARD_HEIGHT){//make sure to not check out of bounds
             if(grid[x_coords[i]][y_coords[j]] == UNKNOWN_CHAR)
               check_surroundings(grid,board,x_coords[i],y_coords[j], BOARD_WIDTH, BOARD_HEIGHT);
           }
@@ -56,7 +56,7 @@ int check_surroundings(char **grid, \
       }
     }
     else{
-      grid[x][y] = board [x][y] + '0'; //show the edges of the empty space numbers
+      grid[x][y] = board[x][y] + '0'; //show the edges of the empty space numbers
     }
   }
   return 0;
@@ -80,7 +80,6 @@ int reveal_grid(char **grid, \
     grid[x][y] = MINE_CHAR;
     return 1; 
   case 0:
-    grid[x][y] = EMPTY_CHAR;
     check_surroundings(grid,board,x,y, BOARD_WIDTH, BOARD_HEIGHT);
     break;
   default:
