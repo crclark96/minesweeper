@@ -43,26 +43,26 @@ int initialize_board(int **board, int BOARD_WIDTH, int BOARD_HEIGHT, int NUM_MIN
     }
     else{
       board[x][y] = 9;
-      increment_surroundings(board,x,y);
+      increment_surroundings(board, BOARD_WIDTH, BOARD_HEIGHT, x,y);
     }
   }
   return 0;
 }
 
-<
-int print_board_integers(int **board, int BOARD_WIDTH, int BOARD_HEIGHT,){
+
+int print_board_integers(int **board, int BOARD_WIDTH, int BOARD_HEIGHT){
   // prints the board's integer representation
   // 9 for mines, numbers for regular tiles
   char indices[] = {'0','1','2','3','4','5','6','7','8','9',\
                     'a','b','c','d','e','f'};
   printf("  ");
-  for (int i=0;i<BOARD_SIZE;i++){
+  for (int i=0;i<BOARD_WIDTH;i++){
     printf("%c ",indices[i]);
   }
   printf("\n");
-  for (int i=0;i<BOARD_SIZE;i++){
+  for (int i=0;i<BOARD_HEIGHT;i++){
     printf("%c ",indices[i]);
-    for (int j=0;j<BOARD_SIZE;j++){
+    for (int j=0;j<BOARD_WIDTH;j++){
       printf("%i ",board[j][i]);
     }
     printf("\n");

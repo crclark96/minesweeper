@@ -8,7 +8,7 @@
 #define EMPTY_CHAR ' '
 #define MINE_CHAR '*'
 
-int initialize_grid(char grid[][BOARD_SIZE]){
+int initialize_grid(char **grid, int BOARD_WIDTH, int BOARD_HEIGHT){
   // initialize character grid to represent game board
 
   for (int i=0;i<BOARD_SIZE;i++){
@@ -20,7 +20,7 @@ int initialize_grid(char grid[][BOARD_SIZE]){
   return 0;
 }
 
-int print_grid(char grid[][BOARD_SIZE]){
+int print_grid(char **grid, int BOARD_WIDTH, int BOARD_HEIGHT){
   char indices[] = {'0','1','2','3','4','5','6','7','8','9',\
                     'a','b','c','d','e','f'};
   printf(" ");
@@ -38,8 +38,8 @@ int print_grid(char grid[][BOARD_SIZE]){
   return 0;
 }
 
-int check_surroundings(char grid[][BOARD_SIZE], \
-                       int board[][BOARD_SIZE], int x, int y){
+int check_surroundings(char **grid, \
+                       int **board, int x, int y, int BOARD_WIDTH, int BOARD_HEIGHT){
   int x_coords[] = {x-1,x,x+1};
   int y_coords[] = {y-1,y,y+1};
   if(x < BOARD_SIZE && y < BOARD_SIZE && x >= 0 && y >= 0){
@@ -48,15 +48,15 @@ int check_surroundings(char grid[][BOARD_SIZE], \
       for(int i=0;i<3;i++){
         for(int j=0;j<3;j++){
           if(grid[x_coords[i]][y_coords[j]] == UNKNOWN_CHAR)
-            check_surroundings(grid,board,x_coords[i],y_coords[j]);
+            check_surroundings(grid,board,x_coords[i],y_coords[j], BOARD_WIDTH, BOARD_HEIGHT);
         }
       }
     }
   }
   return 0;
 }
-int reveal_grid(char grid[][BOARD_SIZE], \
-                int board[][BOARD_SIZE]){
+int reveal_grid(char **grid, \
+                int **board, int BOARD_WIDTH, int BOARD_HEIGHT){
   int x,y;
   get_coords(&x, &y);
   switch(board[x][y]){
@@ -66,7 +66,7 @@ int reveal_grid(char grid[][BOARD_SIZE], \
     break;
   case 0:
     grid[x][y] = EMPTY_CHAR;
-    check_surroundings(grid,board,x,y);
+    check_surroundings(grid,board,x,y, BOARD_WIDTH, BOARD_HEIGHT);
     break;
   default:
     grid[x][y] = board[x][y] + '0'; // convert int to char repr
@@ -74,7 +74,7 @@ int reveal_grid(char grid[][BOARD_SIZE], \
   }
   return 0;
 }
-int flag_grid(char grid[][BOARD_SIZE]){
+int flag_grid(char **grid, int BOARD_WIDTH, int BOARD_HEIGHT){
   int x,y;
   get_coords(&x, &y);
   grid[x][y] = 'F';
@@ -82,7 +82,7 @@ int flag_grid(char grid[][BOARD_SIZE]){
 }
 
 // TODO: this function should verify that all mines have been flagged
-int verify_grid(char grid[][BOARD_SIZE], int board[][BOARD_SIZE]){
+int verify_grid(char **grid, int **board, int BOARD_WIDTH, int BOARD_HEIGHT){
   int verify = 1; //if any of the mines are not flagged verify will be changed to 0
  for (int i=0;i<BOARD_SIZE;i++){
     for (int j=0;j<BOARD_SIZE;j++){
