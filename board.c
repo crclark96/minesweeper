@@ -12,8 +12,8 @@ int increment_surroundings(int **board, int BOARD_WIDTH, int BOARD_HEIGHT, int x
   // boundaries
   for (int i=0;i<3;i++){
     for (int j=0;j<3;j++){
-      if (x_vals[i] >= 0 && x_vals[i] < 16 \
-          && y_vals[j] >= 0 && y_vals[j] < 16){ 
+      if (x_vals[i] >= 0 && x_vals[i] < BOARD_WIDTH \
+          && y_vals[j] >= 0 && y_vals[j] < BOARD_HEIGHT){ 
         board[x_vals[i]][y_vals[j]]++;
       }
     }

@@ -19,8 +19,13 @@ int main(int argc, char* argv[]){
   int NUM_MINES = strtol(argv[3], NULL, 10);
 
   if(errno == ERANGE){
-  	printf("range error");
+  	printf("range error\n");
   	return 0;
+  }
+
+  if(BOARD_WIDTH>16 || BOARD_HEIGHT>16 || NUM_MINES>=(BOARD_HEIGHT*BOARD_WIDTH)/4){
+  	printf("the board can not be larger than 16 by 16 and you can not have more mines than 1/4th of the spaces\n");
+  	return(0);
   }
 
   // sscanf(argv[1], "%d", &BOARD_WIDTH);
