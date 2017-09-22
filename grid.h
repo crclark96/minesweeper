@@ -3,7 +3,6 @@
 
 #include "board.h"
 
-<<<<<<< HEAD
 int initialize_grid(char **grid, int BOARD_WIDTH, int BOARD_HEIGHT);
 int print_grid(char **grid, int BOARD_WIDTH, int BOARD_HEIGHT);
 int reveal_grid(char **grid, \
