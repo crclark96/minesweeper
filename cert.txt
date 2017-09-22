@@ -9,3 +9,6 @@ EXP32-C: no volatile access through non-volatile references
 EXP33-C: do not access uninitialized memory
          no errors or warnings generated with -Wuninitialized flag at
          compile time
+
+EXP46-C: do not use bitwise operator with boolean-like operand
+         no bitwise operators used in codebase
