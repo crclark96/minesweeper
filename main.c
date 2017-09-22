@@ -49,16 +49,24 @@ int main(int argc, char* argv[]){
   printf("\n");
   initialize_grid(grid, BOARD_WIDTH, BOARD_HEIGHT);
   
+  int bFirstMove = 1;
+  
   while(1){
     // main game loop
     print_grid(grid, BOARD_WIDTH, BOARD_HEIGHT);
     printf("press r to reveal, f to flag, v to verify, or q to quit \n");
 
     input = single_char_input();
-
     switch(input){
+    int x,y;
     case 'r':
-      reveal_grid(grid,board, BOARD_WIDTH, BOARD_HEIGHT);
+
+      get_coords(&x,&y);
+      if(reveal_grid(grid,board, BOARD_WIDTH, BOARD_HEIGHT, NUM_MINES, x, y, &bFirstMove)){ // return of 1 means game over
+          print_grid(grid, BOARD_WIDTH, BOARD_HEIGHT);
+          printf("you exploded! \n");
+          exit(0);
+        }
       break;
     case 'f':
       flag_grid(grid, BOARD_WIDTH, BOARD_HEIGHT);

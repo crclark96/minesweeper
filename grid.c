@@ -55,18 +55,30 @@ int check_surroundings(char **grid, \
         }
       }
     }
+    else{
+      grid[x][y] = board [x][y] + '0'; //show the edges of the empty space numbers
+    }
   }
   return 0;
 }
 int reveal_grid(char **grid, \
-                int **board, int BOARD_WIDTH, int BOARD_HEIGHT){
-  int x,y;
-  get_coords(&x, &y);
+                int **board, int BOARD_WIDTH, int BOARD_HEIGHT, int NUM_MINES,\
+                int x, int y, \
+                int *bFirstMove){
+  if(*bFirstMove){ //only runs on first move
+    while(board[x][y] != 0){
+      initialize_board(board, BOARD_WIDTH, BOARD_HEIGHT, NUM_MINES );
+    }
+    printf("DEBUG: New Board: \n\n");
+    print_board_integers(board, BOARD_WIDTH, BOARD_HEIGHT);
+    printf("\n");
+    *bFirstMove = 0; //clear flag
+  }
+
   switch(board[x][y]){
   case 9:
-    // TODO: end game when a mine is revealed 
     grid[x][y] = MINE_CHAR;
-    break;
+    return 1; 
   case 0:
     grid[x][y] = EMPTY_CHAR;
     check_surroundings(grid,board,x,y, BOARD_WIDTH, BOARD_HEIGHT);
@@ -77,6 +89,7 @@ int reveal_grid(char **grid, \
   }
   return 0;
 }
+
 int flag_grid(char **grid, int BOARD_WIDTH, int BOARD_HEIGHT){
   int x,y;
   get_coords(&x, &y);
