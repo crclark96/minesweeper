@@ -72,7 +72,13 @@ int main(int argc, char* argv[]){
       flag_grid(grid, BOARD_WIDTH, BOARD_HEIGHT);
       break;
     case 'v':
-      verify_grid(grid,board, BOARD_WIDTH, BOARD_HEIGHT);
+      if(verify_grid(grid,board, BOARD_WIDTH, BOARD_HEIGHT)){
+      	printf("Congratualtions You Won!\n");
+      	exit(0);
+      }
+      else{
+      	printf("sorry you are not correct. Keep trying\n");
+      }
       break;
     case 'q':
       exit(0);
