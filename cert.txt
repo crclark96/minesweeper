@@ -1,0 +1,14 @@
+EXP30-C: no modifications of variables between sequence points
+         no errors or warnings generated with -Wsequence-point flag at 
+         compile time
+
+EXP32-C: no volatile access through non-volatile references
+         no errors or warnings generated with -Wcast-qual flag at
+         compile time
+
+EXP33-C: do not access uninitialized memory
+         no errors or warnings generated with -Wuninitialized flag at
+         compile time
+
+EXP46-C: do not use bitwise operator with boolean-like operand
+         no bitwise operators used in codebase

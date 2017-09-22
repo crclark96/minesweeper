@@ -56,6 +56,7 @@ int check_surroundings(char **grid, \
       }
     }
     else{
+
       grid[x][y] = board[x][y] + '0'; //show the edges of the empty space numbers
     }
   }
@@ -88,7 +89,6 @@ int reveal_grid(char **grid, \
   }
   return 0;
 }
-
 int flag_grid(char **grid, int BOARD_WIDTH, int BOARD_HEIGHT){
   int x,y;
   get_coords(&x, &y, BOARD_WIDTH, BOARD_HEIGHT);
@@ -99,7 +99,7 @@ int flag_grid(char **grid, int BOARD_WIDTH, int BOARD_HEIGHT){
 // TODO: this function should verify that all mines have been flagged
 int verify_grid(char **grid, int **board, int BOARD_WIDTH, int BOARD_HEIGHT){
   int verify = 1; //if any of the mines are not flagged verify will be changed to 0
- for (int i=0;i<BOARD_WIDTH;i++){
+  for (int i=0;i<BOARD_WIDTH;i++){
     for (int j=0;j<BOARD_HEIGHT;j++){
       if(grid[i][j] == 'F'){
         if(board[i][j] != 9){

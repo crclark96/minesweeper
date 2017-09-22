@@ -2,9 +2,7 @@
 #include "stdlib.h"
 #include "board.h"
 
-
 int increment_surroundings(int **board, int BOARD_WIDTH, int BOARD_HEIGHT, int x, int y){
-
   // increments the surrounding tiles by one so they know how many
   // mines they border
   int x_vals[3] = {x-1,x,x+1};

@@ -1,5 +1,5 @@
 CC = gcc
-CFLAGS = -g -std=c99
+CFLAGS = -g -std=c99 -Wsequence-point -Wcast-qual -Wuninitialized
 EXEC = minesweeper
 OBJS = board.o main.o grid.o input.o
 
