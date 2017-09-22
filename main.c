@@ -24,6 +24,7 @@ int main(int argc, char* argv[]){
   }
 
   if(BOARD_WIDTH>16 || BOARD_HEIGHT>16 || NUM_MINES>=(BOARD_HEIGHT*BOARD_WIDTH)/4){
+  	printf("That is not a valid size\n");
   	printf("the board can not be larger than 16 by 16 and you can not have more mines than 1/4th of the spaces\n");
   	return(0);
   }
@@ -33,13 +34,13 @@ int main(int argc, char* argv[]){
   // sscanf(argv[3], "%d", &NUM_MINES);
 
 
-  int **board =  (int**) malloc(sizeof(int*)*BOARD_WIDTH);
+  int **board =  (int**) malloc(sizeof(*board)*BOARD_WIDTH);
   for(int i = 0; i<BOARD_WIDTH; i++){
-  	board[i] = (int*)malloc(sizeof(int)*BOARD_HEIGHT);
+  	board[i] = (int*)malloc(sizeof(*board[i])*BOARD_HEIGHT);
   }
-  char **grid =  (char**) malloc(sizeof(char*)*BOARD_WIDTH);
+  char **grid =  (char**) malloc(sizeof(*grid)*BOARD_WIDTH);
   for(int i = 0; i<BOARD_WIDTH; i++){
-  	grid[i] = (char*)malloc(sizeof(char)*BOARD_HEIGHT);
+  	grid[i] = (char*)malloc(sizeof(*grid[i])*BOARD_HEIGHT);
   }
   char input, c;
   int num_characters;
