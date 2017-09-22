@@ -49,8 +49,6 @@ int check_surroundings(char **grid, \
         for(int j=0;j<3;j++){
           if(x_coords[i] >= 0 && x_coords[i] < BOARD_WIDTH && y_coords[i] >= 0 \
             && y_coords[i] < BOARD_HEIGHT){//make sure to not check out of bounds
-            printf("x: %d\n", x_coords[i]);
-            printf("y: %d\n", y_coords[i]);
             if(grid[x_coords[i]][y_coords[j]] == UNKNOWN_CHAR)
               check_surroundings(grid,board,x_coords[i],y_coords[j], BOARD_WIDTH, BOARD_HEIGHT);
           }
