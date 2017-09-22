@@ -21,26 +21,49 @@ char single_char_input(){
   return input;
 }
 
-int get_coords(int *x, int *y){
+int get_coords(int *x, int *y, int maxX, int maxY){
   // gets coordinate input from user, converts to ints and 
   // enters data into passed pointers
   char indices[] = {'0','1','2','3','4','5','6','7','8','9',    \
                     'a','b','c','d','e','f'};
+                    
+  
   printf("enter x index: ");
-  char index = single_char_input();
-  for(int i=0;i<sizeof(indices)/sizeof(char);i++){
-    if(indices[i] == index){
-      *x = i;
-      break;
+  int badNumber = 1; //set flag for x coordinate
+  while(badNumber){
+    char index = single_char_input();
+    for(int i=0;i<sizeof(indices)/sizeof(char);i++){
+      if(indices[i] == index){
+        if(i < maxX){
+          *x = i;
+          badNumber = 0;
+        }
+        break;
+      }
+    }
+    if(badNumber){
+      printf("please enter a valid x coordinate based on the board size \n");
     }
   }
+  
+  badNumber = 1; //set flag for y coordinate
+  
   printf("enter y index: ");
-  index = single_char_input();
-  for(int i=0;i<sizeof(indices)/sizeof(char);i++){
-    if(indices[i] == index){
-      *y = i;
-      break;
+  while(badNumber){
+    char index = single_char_input();
+    for(int i=0;i<sizeof(indices)/sizeof(char);i++){
+      if(indices[i] == index){
+        if(i < maxY){
+          *y = i;
+          badNumber = 0;
+        }
+        break;
+      }
+    }
+    if(badNumber){
+      printf("please enter a valid x coordinate based on the board size \n");
     }
   }
+  
   return 0;
 }

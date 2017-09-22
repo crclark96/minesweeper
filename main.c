@@ -61,7 +61,7 @@ int main(int argc, char* argv[]){
     int x,y;
     case 'r':
 
-      get_coords(&x,&y);
+      get_coords(&x,&y, BOARD_WIDTH, BOARD_HEIGHT);
       if(reveal_grid(grid,board, BOARD_WIDTH, BOARD_HEIGHT, NUM_MINES, x, y, &bFirstMove)){ // return of 1 means game over
           print_grid(grid, BOARD_WIDTH, BOARD_HEIGHT);
           printf("you exploded! \n");
