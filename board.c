@@ -9,16 +9,20 @@ int increment_surroundings(int **board, int BOARD_WIDTH, int BOARD_HEIGHT, int x
   int y_vals[3] = {y-1,y,y+1};
   // loop through adjacent coordinates and increment if they are within
   // boundaries
+  printf("x: %d, y: %d \n", x, y);
   for (int i=0;i<3;i++){
     for (int j=0;j<3;j++){
       if (x_vals[i] >= 0 && x_vals[i] < BOARD_WIDTH \
           && y_vals[j] >= 0 && y_vals[j] < BOARD_HEIGHT){ 
-        board[x_vals[i]][y_vals[j]]++;
+        if(board[x_vals[i]][y_vals[j]] != 9){ //if the tile is not already a mine, increment
+          printf("%d, %d \n",x_vals[i],y_vals[j]);
+          board[x_vals[i]][y_vals[j]]++;
+        }
       }
     }
   }
-  // decrement original mine location
-  board[x][y]--;
+  // no need to decrement original location, because that case is taken care of above (see previous comment)
+
 
   return 0;
 }
@@ -36,14 +40,18 @@ int initialize_board(int **board, int BOARD_WIDTH, int BOARD_HEIGHT, int NUM_MIN
     int y = rand() % BOARD_HEIGHT;
     // TODO: allow mines to be placed adjacently
     // (this involves editing the increment_surroundings func as well)
-    if (board[x][y] != 0){
+    //if (board[x][y] != 0){
       // try again
-      i--;
-    }
-    else{
-      board[x][y] = 9;
-      increment_surroundings(board, BOARD_WIDTH, BOARD_HEIGHT, x,y);
-    }
+    //  i--;
+    //}
+    //else{
+      if( board[x][y] == 9){ //if a bomb is already here, try again
+        i--;
+      }else{
+        board[x][y] = 9;
+        increment_surroundings(board, BOARD_WIDTH, BOARD_HEIGHT, x,y);
+      }
+    //}
   }
   return 0;
 }
