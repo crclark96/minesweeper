@@ -73,7 +73,7 @@ int main(int argc, char* argv[]){
       break;
     case 'v':
       if(verify_grid(grid,board, BOARD_WIDTH, BOARD_HEIGHT)){
-      	printf("Congratualtions You Won!\n");
+      	printf("Congratulations You Won!\n");
       	exit(0);
       }
       else{
@@ -89,6 +89,10 @@ int main(int argc, char* argv[]){
     default:
       printf("please enter a valid command (r,f,q,h) \n");
       break;
+    }
+    if(verify_grid(grid,board,BOARD_WIDTH,BOARD_HEIGHT)){
+      printf("Congratulations You Won!\n");
+      exit(0);
     }
   }
   for (int i = 0; i < BOARD_WIDTH; i++){
