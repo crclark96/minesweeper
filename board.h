@@ -4,8 +4,16 @@
 //#define BOARD_SIZE 16
 //#define NUM_MINES 32
 
-int increment_surroundings(int **board, int BOARD_WIDTH, int BOARD_HEIGHT, int x, int y);
-int initialize_board(int **board, int BOARD_WIDTH, int BOARD_HEIGHT, int NUM_MINES);
-int print_board_integers(int **board, int BOARD_WIDTH, int BOARD_HEIGHT);
+struct Board{
+  int height;
+  int width;
+  int num_mines;
+  char** grid;
+  int** board;
+};
+
+int increment_surroundings(struct Board board, int x, int y);
+int initialize_board(struct Board board);
+int print_board_integers(struct Board board);
 
 #endif

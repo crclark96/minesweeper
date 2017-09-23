@@ -6,14 +6,6 @@
 #include "grid.h"
 #include "input.h"
 
-struct Board{
-  int height;
-  int width;
-  int num_mines;
-  char** grid;
-  int** board;
-};
-
 int main(int argc, char* argv[]){
   if(argc != 4){
     printf("You must call ./minesweeper followed by the 3 arguments: width, height, num_mines\n");
@@ -52,8 +44,8 @@ int main(int argc, char* argv[]){
   }
   char input, c;
   int num_characters;
-  initialize_board(board.board,board.width, board.height, board.num_mines);
-  print_board_integers(board.board,board.width, board.height);
+  initialize_board(board);
+  print_board_integers(board);
   printf("\n");
   initialize_grid(board.grid, board.width, board.height);
   
