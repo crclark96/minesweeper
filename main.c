@@ -6,54 +6,62 @@
 #include "grid.h"
 #include "input.h"
 
+struct Board{
+  int height;
+  int width;
+  int num_mines;
+  char** grid;
+  int** board;
+};
+
 int main(int argc, char* argv[]){
   if(argc != 4){
-    printf("You must call ./minesweeper followed by the 3 arguments: BOARD_WIDTH, BOARD_HEIGHT, NUM_MINES\n");
+    printf("You must call ./minesweeper followed by the 3 arguments: width, height, num_mines\n");
     return(0);
   }
   
+  struct Board board;
 
-
-  int BOARD_WIDTH = strtol(argv[1], NULL, 10);
-  int BOARD_HEIGHT = strtol(argv[2], NULL, 10);;
-  int NUM_MINES = strtol(argv[3], NULL, 10);
+  board.width = strtol(argv[1], NULL, 10);
+  board.height = strtol(argv[2], NULL, 10);;
+  board.num_mines = strtol(argv[3], NULL, 10);
 
   if(errno == ERANGE){
   	printf("range error\n");
   	return 0;
   }
 
-  if(BOARD_WIDTH>16 || BOARD_HEIGHT>16 || NUM_MINES>=(BOARD_HEIGHT*BOARD_WIDTH)/4){
+  if(board.width>16 || board.height>16 || board.num_mines>=(board.height*board.width)/4){
   	printf("That is not a valid size\n");
   	printf("the board can not be larger than 16 by 16 and you can not have more mines than 1/4th of the spaces\n");
   	return(0);
   }
 
-  // sscanf(argv[1], "%d", &BOARD_WIDTH);
-  // sscanf(argv[2], "%d", &BOARD_HEIGHT);
-  // sscanf(argv[3], "%d", &NUM_MINES);
+  // sscanf(argv[1], "%d", &board.width);
+  // sscanf(argv[2], "%d", &board.height);
+  // sscanf(argv[3], "%d", &board.num_mines);
 
 
-  int **board =  (int**) malloc(sizeof(*board)*BOARD_WIDTH);
-  for(int i = 0; i<BOARD_WIDTH; i++){
-  	board[i] = (int*)malloc(sizeof(*board[i])*BOARD_HEIGHT);
+  board.board =  (int**) malloc(sizeof(*board.board)*board.width);
+  for(int i = 0; i<board.width; i++){
+  	board.board[i] = (int*)malloc(sizeof(*board.board[i])*board.height);
   }
-  char **grid =  (char**) malloc(sizeof(*grid)*BOARD_WIDTH);
-  for(int i = 0; i<BOARD_WIDTH; i++){
-  	grid[i] = (char*)malloc(sizeof(*grid[i])*BOARD_HEIGHT);
+  board.grid =  (char**) malloc(sizeof(*board.grid)*board.width);
+  for(int i = 0; i<board.width; i++){
+  	board.grid[i] = (char*)malloc(sizeof(*board.grid[i])*board.height);
   }
   char input, c;
   int num_characters;
-  initialize_board(board,BOARD_WIDTH, BOARD_HEIGHT, NUM_MINES);
-  print_board_integers(board,BOARD_WIDTH, BOARD_HEIGHT);
+  initialize_board(board.board,board.width, board.height, board.num_mines);
+  print_board_integers(board.board,board.width, board.height);
   printf("\n");
-  initialize_grid(grid, BOARD_WIDTH, BOARD_HEIGHT);
+  initialize_grid(board.grid, board.width, board.height);
   
   int bFirstMove = 1;
   
   while(1){
     // main game loop
-    print_grid(grid, BOARD_WIDTH, BOARD_HEIGHT);
+    print_grid(board.grid, board.width, board.height);
     printf("press r to reveal, f to flag, v to verify, or q to quit \n");
 
     input = single_char_input();
@@ -61,18 +69,18 @@ int main(int argc, char* argv[]){
     int x,y;
     case 'r':
 
-      get_coords(&x,&y, BOARD_WIDTH, BOARD_HEIGHT);
-      if(reveal_grid(grid,board, BOARD_WIDTH, BOARD_HEIGHT, NUM_MINES, x, y, &bFirstMove)){ // return of 1 means game over
-          print_grid(grid, BOARD_WIDTH, BOARD_HEIGHT);
+      get_coords(&x,&y, board.width, board.height);
+      if(reveal_grid(board.grid,board.board, board.width, board.height, board.num_mines, x, y, &bFirstMove)){ // return of 1 means game over
+          print_grid(board.grid, board.width, board.height);
           printf("you exploded! \n");
           exit(0);
         }
       break;
     case 'f':
-      flag_grid(grid, BOARD_WIDTH, BOARD_HEIGHT);
+      flag_grid(board.grid, board.width, board.height);
       break;
     case 'v':
-      if(verify_grid(grid,board, BOARD_WIDTH, BOARD_HEIGHT)){
+      if(verify_grid(board.grid,board.board, board.width, board.height)){
       	printf("Congratualtions You Won!\n");
       	exit(0);
       }
@@ -91,10 +99,10 @@ int main(int argc, char* argv[]){
       break;
     }
   }
-  for (int i = 0; i < BOARD_WIDTH; i++){
-    int* currentIntPtr = board[i];
+  for (int i = 0; i < board.width; i++){
+    int* currentIntPtr = board.board[i];
     free(currentIntPtr);
-    char* currentIntPtr2 = grid[i];
+    char* currentIntPtr2 = board.grid[i];
     free(currentIntPtr2);
 	}
   return 0;
