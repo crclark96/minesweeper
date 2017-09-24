@@ -106,8 +106,8 @@ int verify_grid(char **grid, int **board, int BOARD_WIDTH, int BOARD_HEIGHT){
           verify = 0; //if a space is incorrectly flagged then the grid is not verified
         }
       }
-      if(board[i][j] == 9){
-        if(grid[i][j] != 'F'){
+      if(grid[i][j] == UNKNOWN_CHAR){
+        if(board[i][j] != 9){
           verify = 0; // if the board has a mine that is not flagged on the grid then the grid is not verified
         }
       }

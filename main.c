@@ -82,6 +82,7 @@ int main(int argc, char* argv[]){
       break;
     }
     if(verify_grid(grid,board,BOARD_WIDTH,BOARD_HEIGHT)){
+      print_grid(grid, BOARD_WIDTH, BOARD_HEIGHT);
       printf("Congratulations You Won!\n");
       exit(0);
     }
