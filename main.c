@@ -54,7 +54,7 @@ int main(int argc, char* argv[]){
   while(1){
     // main game loop
     print_grid(grid, BOARD_WIDTH, BOARD_HEIGHT);
-    printf("press r to reveal, f to flag, v to verify, or q to quit \n");
+    printf("press r to reveal, f to flag, or q to quit. Once all mines are flagged correctly, you win!\n");
 
     input = single_char_input();
     switch(input){
@@ -70,15 +70,6 @@ int main(int argc, char* argv[]){
       break;
     case 'f':
       flag_grid(grid, BOARD_WIDTH, BOARD_HEIGHT);
-      break;
-    case 'v':
-      if(verify_grid(grid,board, BOARD_WIDTH, BOARD_HEIGHT)){
-      	printf("Congratulations You Won!\n");
-      	exit(0);
-      }
-      else{
-      	printf("sorry you are not correct. Keep trying\n");
-      }
       break;
     case 'q':
       exit(0);
