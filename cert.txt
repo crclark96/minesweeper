@@ -12,3 +12,12 @@ EXP33-C: do not access uninitialized memory
 
 EXP46-C: do not use bitwise operator with boolean-like operand
          no bitwise operators used in codebase
+
+
+ARR30-C  do not form or use out-of-bounds pointers or array subscripts
+         in code where we are indexing grid[][] or board[][] checks are 
+         made to ensure that out-of-bound memory is not accessed
+         
+ARR32-C  ensure size areguments for variable length arrays are in a valid range
+         the command line arguments for the game are verified to be within a 
+         valid range, so that board[][] and grid[][] are valid arrays. 

@@ -23,7 +23,7 @@ int main(int argc, char* argv[]){
   	return 0;
   }
 
-  if(BOARD_WIDTH>16 || BOARD_HEIGHT>16 || NUM_MINES>=(BOARD_HEIGHT*BOARD_WIDTH)/4){
+  if(BOARD_WIDTH <= 0 || BOARD_HEIGHT <= 0 || NUM_MINES <= 0 || BOARD_WIDTH>16 || BOARD_HEIGHT>16 || NUM_MINES>=(BOARD_HEIGHT*BOARD_WIDTH)/4){
   	printf("That is not a valid size\n");
   	printf("the board can not be larger than 16 by 16 and you can not have more mines than 1/4th of the spaces\n");
   	return(0);
