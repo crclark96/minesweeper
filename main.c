@@ -6,6 +6,9 @@
 #include "grid.h"
 #include "input.h"
 
+//#define DEBUG uncomment this line to enter debug mode
+
+
 int main(int argc, char* argv[]){
   if(argc != 4){
     printf("You must call ./minesweeper followed by the 3 arguments: BOARD_WIDTH, BOARD_HEIGHT, NUM_MINES\n");
@@ -46,8 +49,10 @@ int main(int argc, char* argv[]){
   char input, c;
   int num_characters;
   initialize_board(board,BOARD_WIDTH, BOARD_HEIGHT, NUM_MINES);
+  #ifdef DEBUG
   print_board_integers(board,BOARD_WIDTH, BOARD_HEIGHT);
   printf("\n");
+  #endif
   initialize_grid(grid, BOARD_WIDTH, BOARD_HEIGHT);
   
   int bFirstMove = 1;

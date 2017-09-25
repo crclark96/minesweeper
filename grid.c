@@ -71,9 +71,11 @@ int reveal_grid(char **grid, \
     while(board[x][y] != 0){
       initialize_board(board, BOARD_WIDTH, BOARD_HEIGHT, NUM_MINES );
     }
+    #ifdef DEBUG
     printf("DEBUG: New Board: \n\n");
     print_board_integers(board, BOARD_WIDTH, BOARD_HEIGHT);
     printf("\n");
+    #endif
     *bFirstMove = 0; //clear flag
   }
 
