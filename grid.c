@@ -7,6 +7,7 @@
 #define UNKNOWN_CHAR '-'
 #define EMPTY_CHAR ' '
 #define MINE_CHAR '*'
+#define FLAG_CHAR 'F'
 
 int initialize_grid(char **grid, int BOARD_WIDTH, int BOARD_HEIGHT){
   // initialize character grid to represent game board
@@ -92,7 +93,12 @@ int reveal_grid(char **grid, \
 int flag_grid(char **grid, int BOARD_WIDTH, int BOARD_HEIGHT){
   int x,y;
   get_coords(&x, &y, BOARD_WIDTH, BOARD_HEIGHT);
-  grid[x][y] = 'F';
+  if(grid[x][y] == FLAG_CHAR){
+    grid[x][y] = UNKNOWN_CHAR;
+  }
+  else{
+    grid[x][y] = FLAG_CHAR;
+  }
   return 0;
 }
 

@@ -23,9 +23,10 @@ int main(int argc, char* argv[]){
   	return 0;
   }
 
-  if(BOARD_WIDTH <= 0 || BOARD_HEIGHT <= 0 || NUM_MINES <= 0 || BOARD_WIDTH>16 || BOARD_HEIGHT>16 || NUM_MINES>=(BOARD_HEIGHT*BOARD_WIDTH)/4){
+  if(BOARD_WIDTH <= 0 || BOARD_HEIGHT <= 0 || NUM_MINES <= 0 || BOARD_WIDTH>16 || BOARD_HEIGHT>16 || BOARD_HEIGHT*BOARD_WIDTH < 10 || NUM_MINES>=(BOARD_HEIGHT*BOARD_WIDTH)/4){
   	printf("That is not a valid size\n");
   	printf("the board can not be larger than 16 by 16 and you can not have more mines than 1/4th of the spaces\n");
+  	printf("The board must have at least 10 tiles total and have at least 1 mine\n");
   	return(0);
   }
 
@@ -54,7 +55,7 @@ int main(int argc, char* argv[]){
   while(1){
     // main game loop
     print_grid(grid, BOARD_WIDTH, BOARD_HEIGHT);
-    printf("press r to reveal, f to flag, or q to quit. Once all mines are flagged correctly, you win!\n");
+    printf("press r to reveal, f to flag/unflag, h for further instructions, or q to quit.\n");
 
     input = single_char_input();
     switch(input){
@@ -75,7 +76,8 @@ int main(int argc, char* argv[]){
       exit(0);
       break;
     case 'h':
-      printf("press r to reveal, f to flag, v to verify, or q to quit \n");
+      printf("You win the game if you uncover all tiles that are not mines.\nIf a mine is picked you lose.\n");
+      printf("On the first move, a tile with no surrounding mines is always picked.\nFlagging is for your convience to remember where you think the mines are are.\n");
       break;
     default:
       printf("please enter a valid command (r,f,q,h) \n");

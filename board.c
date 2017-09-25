@@ -9,13 +9,13 @@ int increment_surroundings(int **board, int BOARD_WIDTH, int BOARD_HEIGHT, int x
   int y_vals[3] = {y-1,y,y+1};
   // loop through adjacent coordinates and increment if they are within
   // boundaries
-  printf("x: %d, y: %d \n", x, y);
+  //printf("x: %d, y: %d \n", x, y);
   for (int i=0;i<3;i++){
     for (int j=0;j<3;j++){
       if (x_vals[i] >= 0 && x_vals[i] < BOARD_WIDTH \
           && y_vals[j] >= 0 && y_vals[j] < BOARD_HEIGHT){ 
         if(board[x_vals[i]][y_vals[j]] != 9){ //if the tile is not already a mine, increment
-          printf("%d, %d \n",x_vals[i],y_vals[j]);
+          //printf("%d, %d \n",x_vals[i],y_vals[j]);
           board[x_vals[i]][y_vals[j]]++;
         }
       }
