@@ -10,9 +10,11 @@ EXP33-C: do not access uninitialized memory
          no errors or warnings generated with -Wuninitialized flag at
          compile time
 
+EXP40-C. Do not modify constant objects
+         we used preprocessor #defines, and so there are no const objects we modified
+
 EXP46-C: do not use bitwise operator with boolean-like operand
          no bitwise operators used in codebase
-
 
 ARR30-C  do not form or use out-of-bounds pointers or array subscripts
          in code where we are indexing grid[][] or board[][] checks are 
