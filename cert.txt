@@ -10,6 +10,22 @@ EXP33-C: do not access uninitialized memory
          no errors or warnings generated with -Wuninitialized flag at
          compile time
 
+EXP34-C: do not dereference null pointers
+         we ensure that proper board sizes are passed so no malloc'd memory returns null
+
+EXP35-C: do not modify objects with a temporary lifetime
+         all of our objects are permanent
+
+EXP36-C: do not cast pointers into more strictly aligned pointer types
+         all of our types are static and do not change throughout the program
+
+EXP37-C: call functions with the correct number and type of arguments
+         all of our function calls align with function definitions defined in
+         header files
+
+EXP39-C: do not access variables through pointers of incompatible types
+         we do not make any type changes in our program
+
 EXP40-C. Do not modify constant objects
          we used preprocessor #defines, and so there are no const objects we modified
 
